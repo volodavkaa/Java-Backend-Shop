@@ -15,7 +15,7 @@ services:
 
   frontend:
     build:
-      context: "C:/Users/volod/OneDrive/Desktop/work/shopfrontend/frontend"
+      context: "./frontend"
       dockerfile: Dockerfile
     ports:
       - "5173:80"
