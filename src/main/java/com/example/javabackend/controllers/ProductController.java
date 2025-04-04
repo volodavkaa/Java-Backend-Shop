@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/api/products")
 @RequiredArgsConstructor
 public class ProductController {
 
     private final ProductRepository productRepository;
     private final ProductService productService;
 
-    // 1) Get all products
+    // GET /api/products - отримання списку продуктів
     @GetMapping
-    public List<Product> getAll() {
+    public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
 
@@ -31,7 +31,7 @@ public class ProductController {
                 .orElseThrow(() -> new RuntimeException("Product not found with id=" + id));
     }
 
-    // 3) Create product (POST) – використовуємо DTO
+    // POST /api/products - створення продукту
     @PostMapping
     public ResponseEntity<Product> createProduct(@RequestBody ProductDTO productDTO) {
         Product createdProduct = productService.createProduct(productDTO);
